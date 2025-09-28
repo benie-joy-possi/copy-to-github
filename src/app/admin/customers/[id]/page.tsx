@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { ArrowLeft, Edit, Save, X } from "lucide-react";
+import { ArrowLeft, CreditCard as Edit, Save, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const CustomerDetail = () => {
