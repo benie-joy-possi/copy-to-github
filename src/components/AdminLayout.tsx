@@ -1,5 +1,6 @@
 import { type PropsWithChildren } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
@@ -14,8 +15,8 @@ import {
 } from "lucide-react";
 
 export const AdminLayout = ({ children }: PropsWithChildren) => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
   const { toast } = useToast();
 
   const handleSignOut = () => {
@@ -24,7 +25,7 @@ export const AdminLayout = ({ children }: PropsWithChildren) => {
       title: "Signed out",
       description: "You have been successfully signed out.",
     });
-    navigate("/login");
+    router.push("/login");
   };
 
   const navItems = [
@@ -73,7 +74,7 @@ export const AdminLayout = ({ children }: PropsWithChildren) => {
               to={item.href}
               className={cn(
                 "flex items-center gap-3 rounded-lg px-4 py-2 font-medium text-sm transition-colors",
-                location.pathname === item.href
+                pathname === item.href
                   ? "bg-primary/10 text-primary"
                   : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
               )}
